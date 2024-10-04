@@ -1,15 +1,30 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react';
+import './App.css';
+import Tod from './Component/Tod';
+import { ShimmerText } from "react-shimmer-effects";
 
-import './App.css'
 
 function App() {
+  const [loading, setLoading] = useState(true); 
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
 
   return (
     <>
-     <h1> hello from andy</h1>
-     
+      {loading ? (
+        <div>
+    
+          <ShimmerText line={23} gap={20} />;
+        </div>
+      ) : (
+        <Tod />
+      )}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
